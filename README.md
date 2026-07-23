@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="sq" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GZ Individual Training | Gabriel Zefi</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:ital,wght@0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Oswald', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#ccff00', // Energetic Lime Yellow
+                            hover: '#b3e600',
+                            dark: '#99cc00'
+                        },
+                        dark: {
+                            DEFAULT: '#080808',
+                            card: '#121212',
+                            elevated: '#1a1a1a',
+                            border: '#262626'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .hero-overlay {
+            background: radial-gradient(circle at 70% 30%, rgba(204, 255, 0, 0.08) 0%, transparent 60%),
+                        linear-gradient(to right, rgba(8, 8, 8, 0.96) 0%, rgba(8, 8, 8, 0.8) 100%);
+        }
+        .text-glow {
+            text-shadow: 0 0 30px rgba(204, 255, 0, 0.35);
+        }
+        .border-glow {
+            box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+        }
+        .glass-card {
+            background: rgba(18, 18, 18, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card:hover {
+            border-color: rgba(204, 255, 0, 0.4);
+        }
+        .lang-sq, .lang-en {
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-dark text-white font-sans antialiased overflow-x-hidden selection:bg-brand selection:text-dark">
+
+    <!-- Header Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 border-b border-transparent" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Official Brand Emblem -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer group" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <svg viewBox="0 0 200 200" class="w-12 h-12 transition-transform duration-300 group-hover:scale-105 drop-shadow-md">
+                        <circle cx="100" cy="100" r="94" fill="#000000" stroke="#ffffff" stroke-width="6"/>
+                        <text x="100" y="105" text-anchor="middle" fill="#ffffff" font-family="Oswald, sans-serif" font-weight="700" font-style="italic" font-size="78" letter-spacing="-2">GZ</text>
+                        <line x1="28" y1="124" x2="82" y2="124" stroke="#ffffff" stroke-width="2.5"/>
+                        <circle cx="100" cy="124" r="8" fill="#ffffff"/>
+                        <circle cx="100" cy="124" r="4" fill="#000000"/>
+                        <line x1="118" y1="124" x2="172" y2="124" stroke="#ffffff" stroke-width="2.5"/>
+                        <text x="100" y="152" text-anchor="middle" fill="#ffffff" font-family="Oswald, sans-serif" font-weight="700" font-size="17" letter-spacing="3.5">INDIVIDUAL</text>
+                        <text x="100" y="172" text-anchor="middle" fill="#ffffff" font-family="Oswald, sans-serif" font-weight="500" font-size="13" letter-spacing="4.5">TRAINING</text>
+                    </svg>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-xl tracking-wider uppercase leading-none text-white group-hover:text-brand transition-colors">GZ Training</span>
+                        <span class="text-[10px] text-gray-400 font-semibold tracking-widest uppercase mt-0.5">Gabriel Zefi • Head Coach</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-brand transition-colors font-medium text-sm tracking-wide">
+                        <span class="lang-sq">Rreth Meje</span><span class="lang-en hidden">About</span>
+                    </a>
+                    <a href="#services" class="text-gray-300 hover:text-brand transition-colors font-medium text-sm tracking-wide">
+                        <span class="lang-sq">Shërbimet</span><span class="lang-en hidden">Services</span>
+                    </a>
+                    <a href="#location" class="text-gray-300 hover:text-brand transition-colors font-medium text-sm tracking-wide">
+                        <span class="lang-sq">Vendndodhja</span><span class="lang-en hidden">Location</span>
+                    </a>
+                    <a href="#contact" class="bg-brand text-dark px-6 py-2.5 rounded-full font-bold text-sm tracking-wide hover:bg-brand-hover transition-all transform hover:scale-105 shadow-md">
+                        <span class="lang-sq">Rezervo Seancën</span><span class="lang-en hidden">Book Session</span>
+                    </a>
+                    
+                    <!-- Language Toggle Switch -->
+                    <button id="langToggleBtn" class="flex items-center gap-2 bg-dark-card text-white px-3.5 py-1.5 rounded-full text-xs font-bold border border-gray-800 hover:border-brand transition-colors">
+                        <i class="fas fa-globe text-brand"></i> <span id="currentLangLabel">EN</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Controls -->
+                <div class="md:hidden flex items-center gap-3">
+                    <button id="langToggleBtnMobile" class="flex items-center gap-1.5 bg-dark-card text-white px-3 py-1 rounded-full text-xs font-bold border border-gray-700 hover:border-brand">
+                        <i class="fas fa-globe text-brand"></i> <span id="currentLangLabelMobile">EN</span>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-white hover:text-brand focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-card/95 backdrop-blur-xl border-t border-gray-800">
+            <div class="px-6 pt-4 pb-6 space-y-3">
+                <a href="#about" class="block py-2 text-base font-medium text-gray-300 hover:text-brand">
+                    <span class="lang-sq">Rreth Meje</span><span class="lang-en hidden">About</span>
+                </a>
+                <a href="#services" class="block py-2 text-base font-medium text-gray-300 hover:text-brand">
+                    <span class="lang-sq">Shërbimet</span><span class="lang-en hidden">Services</span>
+                </a>
+                <a href="#location" class="block py-2 text-base font-medium text-gray-300 hover:text-brand">
+                    <span class="lang-sq">Vendndodhja</span><span class="lang-en hidden">Location</span>
+                </a>
+                <a href="#contact" class="block py-3 text-center rounded-xl bg-brand font-bold text-dark mt-2">
+                    <span class="lang-sq">Rezervo Seancën</span><span class="lang-en hidden">Book Session</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=1920&auto=format&fit=crop" alt="Football Training Pitch" class="w-full h-full object-cover object-center" />
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <!-- Status Badges -->
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <a href="https://maps.app.goo.gl/CjqjhZC7u5JJatQo6" target="_blank" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/10 border border-brand/30 text-brand text-xs font-bold tracking-wide backdrop-blur-md hover:bg-brand/20 transition-all">
+                        <i class="fas fa-map-marker-alt"></i> 
+                        <span class="lang-sq">Bushat, Shqipëri • Fusha Basania FC</span>
+                        <span class="lang-en hidden">Bushat, Albania • Basania FC Pitch</span>
+                        <i class="fas fa-external-link-alt text-[10px] opacity-70"></i>
+                    </a>
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-200 text-xs font-bold tracking-wide backdrop-blur-md">
+                        <i class="fas fa-futbol text-brand"></i>
+                        <span class="lang-sq">Futbollist i FC Basania</span>
+                        <span class="lang-en hidden">FC Basania Footballer</span>
+                    </span>
+                </div>
+                
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-heading font-bold uppercase leading-none mb-6 tracking-tight text-glow">
+                    <span class="lang-sq">Ngri Lojën <br><span class="text-brand">Tënde Në Nivelin Tjetër.</span></span>
+                    <span class="lang-en hidden">Elevate Your <br><span class="text-brand">Game To The Next Level.</span></span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl leading-relaxed">
+                    <span class="lang-sq">Stërvitje individuale profesionale futbolli nga <strong>Gabriel Zefi</strong>, futbollist i FC Basania. Përmirësim teknik, përgatitje atletike dhe inteligjencë loje e përshtatur për çdo lojtar.</span>
+                    <span class="lang-en hidden">Elite individual football training by <strong>Gabriel Zefi</strong>, active FC Basania footballer. Tailored technical development, athletic conditioning, and game intelligence for dedicated players.</span>
+                </p>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://wa.me/355692064673?text=P%C3%ABrsh%C3%ABndetje%20Gabriel!%20Dëshiroj%20të%20rezervo%20një%20seancë%20stërvitjeje." target="_blank" class="bg-brand text-dark px-8 py-4 rounded-full font-bold text-base text-center hover:bg-brand-hover transition-all transform hover:scale-105 border-glow flex items-center justify-center gap-3">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                        <span class="lang-sq">Rezervo në WhatsApp</span>
+                        <span class="lang-en hidden">Book via WhatsApp</span>
+                    </a>
+                    <a href="https://www.instagram.com/gz.individual_training" target="_blank" class="bg-dark-card/80 border border-gray-700 text-white px-8 py-4 rounded-full font-bold text-base text-center hover:border-brand hover:text-brand transition-all flex items-center justify-center gap-3">
+                        <i class="fab fa-instagram text-xl text-pink-500"></i> 
+                        <span class="lang-sq">Instagram Zyrtar</span>
+                        <span class="lang-en hidden">Official Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Performance Highlights -->
+    <section class="py-10 bg-dark-card/60 border-y border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4 rounded-2xl bg-dark/40 border border-gray-800/50">
+                    <div class="text-3xl md:text-4xl font-heading font-bold text-brand">100%</div>
+                    <div class="text-xs text-gray-400 font-semibold tracking-wider uppercase mt-1">
+                        <span class="lang-sq">Individualizim</span>
+                        <span class="lang-en hidden">Personalized Drills</span>
+                    </div>
+                </div>
+                <div class="p-4 rounded-2xl bg-dark/40 border border-gray-800/50">
+                    <div class="text-3xl md:text-4xl font-heading font-bold text-white">1-me-1</div>
+                    <div class="text-xs text-gray-400 font-semibold tracking-wider uppercase mt-1">
+                        <span class="lang-sq">Vëmendje e Plotë</span>
+                        <span class="lang-en hidden">Direct Coaching</span>
+                    </div>
+                </div>
+                <div class="p-4 rounded-2xl bg-dark/40 border border-gray-800/50">
+                    <div class="text-3xl md:text-4xl font-heading font-bold text-brand">FC Basania</div>
+                    <div class="text-xs text-gray-400 font-semibold tracking-wider uppercase mt-1">
+                        <span class="lang-sq">Përvojë si Lojtar Aktiv</span>
+                        <span class="lang-en hidden">Pro Pitch Experience</span>
+                    </div>
+                </div>
+                <div class="p-4 rounded-2xl bg-dark/40 border border-gray-800/50">
+                    <div class="text-3xl md:text-4xl font-heading font-bold text-white">Bushat</div>
+                    <div class="text-xs text-gray-400 font-semibold tracking-wider uppercase mt-1">
+                        <span class="lang-sq">Fusha Basania FC</span>
+                        <span class="lang-en hidden">Basania FC Pitch</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coach Presentation Section (Featuring Compact Photo) -->
+    <section id="about" class="py-24 bg-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Compact Coach Photo Box -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div class="relative w-64 sm:w-72 rounded-2xl overflow-hidden border-2 border-brand/30 bg-dark-card p-3 shadow-2xl transition-transform duration-300 hover:scale-105">
+                        <div class="aspect-square rounded-xl overflow-hidden bg-neutral-900 flex items-center justify-center">
+                            <!-- Compact Profile Emblem Illustration -->
+                            <svg viewBox="0 0 200 200" class="w-36 h-36 drop-shadow-xl">
+                                <circle cx="100" cy="100" r="94" fill="#000000" stroke="#ffffff" stroke-width="6"/>
+                                <text x="100" y="105" text-anchor="middle" fill="#ffffff" font-family="Oswald, sans-serif" font-weight="700" font-style="italic" font-size="78" letter-spacing="-2">GZ</text>
+                                <line x1="28" y1="124" x2="82" y2="124" stroke="#ffffff" stroke-width="2.5"/>
+                                <circle cx="100" cy="124" r="8" fill="#ffffff"/>
+                                <circle cx="100" cy="124" r="4" fill="#000000"/>
+                                <line x1="118" y1="124" x2="172" y2="124" stroke="#ffffff" stroke-width="2.5"/>
+                                <text x="100" y="152" text-anchor="middle" fill="#ffffff" font-family="Oswald, sans-serif" font-weight="700" font-size="17" letter-spacing="3.5">INDIVIDUAL</text>
+                                <text x="100" y="172" text-anchor="middle" fill="#ffffff" font-family="Oswald, sans-serif" font-weight="500" font-size="13" letter-spacing="4.5">TRAINING</text>
+                            </svg>
+                        </div>
+                        <div class="mt-3 text-center">
+                            <h4 class="text-xl font-heading font-bold text-white uppercase tracking-wider">Gabriel Zefi</h4>
+                            <p class="text-brand font-bold text-xs uppercase tracking-widest">FC Basania Player & Coach</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content Presentation -->
+                <div class="lg:col-span-7">
+                    <span class="text-brand font-bold tracking-widest uppercase text-xs mb-2 block">
+                        <span class="lang-sq">Rreth Trajnerit</span>
+                        <span class="lang-en hidden">About The Coach</span>
+                    </span>
+                    <h3 class="text-4xl font-heading font-bold text-white mb-4">Gabriel Zefi</h3>
+                    <p class="text-brand font-semibold text-sm mb-6 flex items-center gap-2">
+                        <i class="fas fa-futbol"></i>
+                        <span class="lang-sq">Futbollist Zyrtar i FC Basania</span>
+                        <span class="lang-en hidden">Active Player for FC Basania</span>
+                    </p>
+                    
+                    <p class="text-gray-300 text-base md:text-lg mb-6 leading-relaxed">
+                        <span class="lang-sq">Si futbollist aktiv i <strong>FC Basania</strong>, unë e di saktësisht se çfarë kërkohet sot në fushën e lojës: shpejtësi vendimmarrjeje, teknike e pastër dhe përgatitje fizike pa kompromis. Te <strong>GZ Individual Training</strong>, marr përvojën time direkte nga ndeshjet zyrtare dhe ta transmetoj ty 1-me-1.</span>
+                        <span class="lang-en hidden">As an active footballer for <strong>FC Basania</strong>, I know exactly what is required on the pitch today: fast decision making, clean technique, and uncompromised physical preparation. At <strong>GZ Individual Training</strong>, I take my match-day experience and pass it directly to you 1-on-1.</span>
+                    </p>
+                    
+                    <p class="text-gray-400 text-base mb-8 leading-relaxed">
+                        <span class="lang-sq">Stërvitjet zhvillohen te fusha e <strong>Basania FC në Bushat</strong>, me pajisje moderne dhe metodologji të përshtatura sipas moshës dhe pozicionit të lojtarit.</span>
+                        <span class="lang-en hidden">Sessions are held at the <strong>Basania FC pitch in Bushat</strong>, featuring modern equipment and methodologies tailored to the player's age and position.</span>
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 bg-dark-card p-3.5 rounded-xl border border-gray-800">
+                            <i class="fas fa-check-circle text-brand text-lg"></i>
+                            <span class="text-xs font-semibold">
+                                <span class="lang-sq">Përvojë si Lojtar Aktiv</span>
+                                <span class="lang-en hidden">Active Player Experience</span>
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-dark-card p-3.5 rounded-xl border border-gray-800">
+                            <i class="fas fa-check-circle text-brand text-lg"></i>
+                            <span class="text-xs font-semibold">
+                                <span class="lang-sq">Vëmendje 1-me-1</span>
+                                <span class="lang-en hidden">1-on-1 Attention</span>
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-dark-card p-3.5 rounded-xl border border-gray-800">
+                            <i class="fas fa-check-circle text-brand text-lg"></i>
+                            <span class="text-xs font-semibold">
+                                <span class="lang-sq">Përgatitje Fizike & Teknike</span>
+                                <span class="lang-en hidden">Physical & Technical Prep</span>
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-dark-card p-3.5 rounded-xl border border-gray-800">
+                            <i class="fas fa-check-circle text-brand text-lg"></i>
+                            <span class="text-xs font-semibold">
+                                <span class="lang-sq">Mentalitet Fitues</span>
+                                <span class="lang-en hidden">Winning Mindset</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-dark-card border-y border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand font-bold tracking-widest uppercase text-xs mb-2 block">
+                    <span class="lang-sq">Programet e Stërvitjes</span>
+                    <span class="lang-en hidden">Training Programs</span>
+                </span>
+                <h3 class="text-4xl font-heading font-bold text-white mb-4">
+                    <span class="lang-sq">Zhvillo Potencialin Tënd Të Plotë</span>
+                    <span class="lang-en hidden">Unleash Your Full Potential</span>
+                </h3>
+                <p class="text-gray-400 text-sm md:text-base">
+                    <span class="lang-sq">Çdo seancë dizajnohet me kujdes për të përmirësuar pikat e tua të dobëta dhe për të fuqizuar ato të fortat.</span>
+                    <span class="lang-en hidden">Every session is carefully designed to improve your weak points and reinforce your strengths.</span>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Program 1 -->
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-brand/10 text-brand rounded-2xl flex items-center justify-center text-2xl mb-6 border border-brand/20">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <h4 class="text-xl font-heading font-bold mb-3 text-white uppercase tracking-wide">
+                        <span class="lang-sq">Teknikë e Përsosur</span>
+                        <span class="lang-en hidden">Technical Mastery</span>
+                    </h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        <span class="lang-sq">Prekja e parë e topit, saktësia e pasimit me të dyja këmbët, driblimi në hapësira të ngushta dhe goditja e portës.</span>
+                        <span class="lang-en hidden">First touch, passing precision with both feet, tight space dribbling, and finishing techniques.</span>
+                    </p>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-brand/10 text-brand rounded-2xl flex items-center justify-center text-2xl mb-6 border border-brand/20">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4 class="text-xl font-heading font-bold mb-3 text-white uppercase tracking-wide">
+                        <span class="lang-sq">Kondicion & Shpejtësi</span>
+                        <span class="lang-en hidden">Athletic Conditioning</span>
+                    </h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        <span class="lang-sq">Shpejtësi shpërthyese në hapat e parë, agilitet, ndryshim i menjëhershëm drejtimi dhe koordinim motorik.</span>
+                        <span class="lang-en hidden">Explosive first-step speed, agility, rapid change of direction, and motor coordination.</span>
+                    </p>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-brand/10 text-brand rounded-2xl flex items-center justify-center text-2xl mb-6 border border-brand/20">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4 class="text-xl font-heading font-bold mb-3 text-white uppercase tracking-wide">
+                        <span class="lang-sq">Taktikë & Taktiqë Loje</span>
+                        <span class="lang-en hidden">Game IQ & Positioning</span>
+                    </h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        <span class="lang-sq">Skanimi i fushës përpara marrjes së topit, orientimi trupor dhe vendimmarrja e shpejtë nën presionin e kundërshtarit.</span>
+                        <span class="lang-en hidden">Pitch scanning before receiving, body orientation, and quick decision-making under pressure.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section (Google Maps Integration) -->
+    <section id="location" class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-neutral-900 via-dark-card to-neutral-900 border border-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold uppercase tracking-wider mb-4">
+                            <i class="fas fa-map-pin"></i> Base Location
+                        </span>
+                        <h3 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+                            <span class="lang-sq">Ku Zhvillohen Stërvitjet?</span>
+                            <span class="lang-en hidden">Where Do We Train?</span>
+                        </h3>
+                        <p class="text-gray-300 text-base mb-6 leading-relaxed">
+                            <span class="lang-sq">Seancat stërvitore zhvillohen në kompleksin e futbollit <strong>Fusha Basania FC</strong> në <strong>Bushat, Shqipëri</strong>.</span>
+                            <span class="lang-en hidden">Training sessions take place at the <strong>Basania FC Pitch</strong> located in <strong>Bushat, Albania</strong>.</span>
+                        </p>
+                        <div class="space-y-3 mb-6 text-sm">
+                            <div class="flex items-center gap-3 text-gray-300">
+                                <i class="fas fa-check text-brand"></i> <span><strong>Qyteti:</strong> Bushat, Shkodër, Shqipëri</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-300">
+                                <i class="fas fa-check text-brand"></i> <span><strong>Fusha:</strong> Fusha Basania FC</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-300">
+                                <i class="fas fa-check text-brand"></i> <span><strong>Orari:</strong> Me rezervim paraprak</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://maps.app.goo.gl/CjqjhZC7u5JJatQo6" target="_blank" class="bg-dark p-8 rounded-2xl border border-gray-800 text-center flex flex-col items-center justify-center hover:border-brand transition-all group shadow-xl">
+                        <div class="w-16 h-16 bg-brand/10 text-brand rounded-full flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-2 text-white">Basania FC • Bushat</h4>
+                        <p class="text-gray-400 text-xs mb-6">Eja të stërvitesh në kushte optimale sportive.</p>
+                        <span class="bg-brand text-dark px-6 py-3 rounded-full font-bold text-sm hover:bg-brand-hover transition-colors inline-flex items-center gap-2">
+                            <i class="fas fa-location-arrow"></i>
+                            <span class="lang-sq">Hap në Google Maps</span>
+                            <span class="lang-en hidden">Open in Google Maps</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking & Contact Section -->
+    <section id="contact" class="py-24 bg-dark-card border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Direct Channels -->
+                <div>
+                    <span class="text-brand font-bold tracking-widest uppercase text-xs mb-2 block">
+                        <span class="lang-sq">Lidhu me Gabriel Zefi</span>
+                        <span class="lang-en hidden">Connect with Gabriel Zefi</span>
+                    </span>
+                    <h3 class="text-4xl font-heading font-bold text-white mb-6">
+                        <span class="lang-sq">Rezervo Seancën Tënde Tani</span>
+                        <span class="lang-en hidden">Book Your Session Today</span>
+                    </h3>
+                    <p class="text-gray-400 text-base mb-8">
+                        <span class="lang-sq">Mos e lër përmirësimin tënd për nesër. Kontakto drejtpërdrejt me trajnerin për të caktuar ditën dhe orarin e stërvitjes.</span>
+                        <span class="lang-en hidden">Don't postpone your growth. Reach out directly to schedule your personal training slot.</span>
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/355692064673" target="_blank" class="flex items-center gap-4 p-4 rounded-xl bg-dark border border-gray-800 hover:border-green-500 transition-colors group">
+                            <div class="w-12 h-12 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">WhatsApp</h4>
+                                <p class="text-gray-400 text-xs">+355 69 206 4673</p>
+                            </div>
+                        </a>
+
+                        <!-- Direct Phone Call -->
+                        <a href="tel:+355692064673" class="flex items-center gap-4 p-4 rounded-xl bg-dark border border-gray-800 hover:border-brand transition-colors group">
+                            <div class="w-12 h-12 bg-brand/10 text-brand rounded-full flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">
+                                    <span class="lang-sq">Telefonatë Direkt</span>
+                                    <span class="lang-en hidden">Direct Phone Call</span>
+                                </h4>
+                                <p class="text-gray-400 text-xs">+355 069 2064 673</p>
+                            </div>
+                        </a>
+
+                        <!-- Training Instagram -->
+                        <a href="https://www.instagram.com/gz.individual_training" target="_blank" class="flex items-center gap-4 p-4 rounded-xl bg-dark border border-gray-800 hover:border-pink-500 transition-colors group">
+                            <div class="w-12 h-12 bg-pink-500/10 text-pink-500 rounded-full flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">
+                                    <span class="lang-sq">Instagram Zyrtar Stërvitje</span>
+                                    <span class="lang-en hidden">Training Instagram</span>
+                                </h4>
+                                <p class="text-gray-400 text-xs">@gz.individual_training</p>
+                            </div>
+                        </a>
+
+                        <!-- Personal Instagram -->
+                        <a href="https://www.instagram.com/_gabrielz_20" target="_blank" class="flex items-center gap-4 p-4 rounded-xl bg-dark border border-gray-800 hover:border-purple-500 transition-colors group">
+                            <div class="w-12 h-12 bg-purple-500/10 text-purple-400 rounded-full flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-user text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">
+                                    <span class="lang-sq">Instagram Personal (Gabriel Zefi)</span>
+                                    <span class="lang-en hidden">Personal Instagram (Gabriel Zefi)</span>
+                                </h4>
+                                <p class="text-gray-400 text-xs">@_gabrielz_20</p>
+                            </div>
+                        </a>
+
+                        <!-- Google Maps -->
+                        <a href="https://maps.app.goo.gl/CjqjhZC7u5JJatQo6" target="_blank" class="flex items-center gap-4 p-4 rounded-xl bg-dark border border-gray-800 hover:border-brand transition-colors group">
+                            <div class="w-12 h-12 bg-brand/10 text-brand rounded-full flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-map-pin"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Google Maps</h4>
+                                <p class="text-gray-400 text-xs">Basania FC, Bushat, Shqipëri</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Form -->
+                <div class="bg-dark p-8 rounded-2xl border border-gray-800 shadow-2xl">
+                    <h4 class="text-2xl font-bold mb-6 text-white">
+                        <span class="lang-sq">Dërgo Kërkesë Për Stërvitje</span>
+                        <span class="lang-en hidden">Send Training Inquiry</span>
+                    </h4>
+                    <form id="inquiryForm">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">
+                                    <span class="lang-sq">Emri & Mbiemri</span>
+                                    <span class="lang-en hidden">Full Name</span>
+                                </label>
+                                <input type="text" id="formName" data-ph-sq="Emri juaj" data-ph-en="Your name" placeholder="Emri juaj" class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-brand transition-colors" required>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">
+                                        <span class="lang-sq">Mosha</span>
+                                        <span class="lang-en hidden">Age</span>
+                                    </label>
+                                    <input type="number" id="formAge" data-ph-sq="Mosha" data-ph-en="Age" placeholder="Mosha" class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-brand transition-colors" required>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">
+                                        <span class="lang-sq">Pozicioni</span>
+                                        <span class="lang-en hidden">Position</span>
+                                    </label>
+                                    <input type="text" id="formPos" data-ph-sq="p.sh. Sulmues" data-ph-en="e.g. Forward" placeholder="p.sh. Sulmues" class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-brand transition-colors" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">
+                                    <span class="lang-sq">Synimi Juaj</span>
+                                    <span class="lang-en hidden">Main Goal</span>
+                                </label>
+                                <textarea id="formGoal" rows="3" data-ph-sq="Çfarë dëshironi të përmirësoni më shumë?" data-ph-en="What do you want to improve?" placeholder="Çfarë dëshironi të përmirësoni më shumë?" class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-brand transition-colors" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brand text-dark font-bold text-base py-4 rounded-xl hover:bg-brand-hover transition-colors flex items-center justify-center gap-2 border-glow mt-2">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                                <span class="lang-sq">Dërgo në WhatsApp</span>
+                                <span class="lang-en hidden">Send via WhatsApp</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action WhatsApp Button -->
+    <a href="https://wa.me/355692064673?text=P%C3%ABrsh%C3%ABndetje%20Gabriel!" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white text-3xl shadow-2xl hover:scale-110 transition-transform z-50">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-black py-10 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <svg viewBox="0 0 200 200" class="w-8 h-8">
+                    <circle cx="100" cy="100" r="94" fill="#000000" stroke="#ffffff" stroke-width="8"/>
+                    <text x="100" y="110" text-anchor="middle" fill="#ffffff" font-family="Oswald, sans-serif" font-weight="700" font-style="italic" font-size="85">GZ</text>
+                </svg>
+                <span class="font-heading font-bold text-lg uppercase text-white">GZ Individual Training</span>
+            </div>
+            <p class="text-gray-500 text-xs text-center md:text-left">
+                &copy; 2026 GZ Individual Training | Gabriel Zefi (FC Basania). Bushat, Shqipëri.
+            </p>
+            <div class="flex space-x-4">
+                <a href="https://www.instagram.com/gz.individual_training" target="_blank" class="text-gray-400 hover:text-pink-500 transition-colors">
+                    <i class="fab fa-instagram text-lg"></i>
+                </a>
+                <a href="https://www.instagram.com/_gabrielz_20" target="_blank" class="text-gray-400 hover:text-purple-400 transition-colors">
+                    <i class="fas fa-user text-base"></i>
+                </a>
+                <a href="https://wa.me/355692064673" target="_blank" class="text-gray-400 hover:text-green-500 transition-colors">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                </a>
+                <a href="https://maps.app.goo.gl/CjqjhZC7u5JJatQo6" target="_blank" class="text-gray-400 hover:text-brand transition-colors">
+                    <i class="fas fa-map-marker-alt text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Language Switcher Logic
+        let currentLang = 'sq';
+        const langToggleBtns = [document.getElementById('langToggleBtn'), document.getElementById('langToggleBtnMobile')];
+        const langLabels = [document.getElementById('currentLangLabel'), document.getElementById('currentLangLabelMobile')];
+
+        function switchLanguage() {
+            currentLang = currentLang === 'sq' ? 'en' : 'sq';
+            
+            langLabels.forEach(label => {
+                if(label) label.innerText = currentLang === 'sq' ? 'EN' : 'AL';
+            });
+            
+            document.querySelectorAll('.lang-sq').forEach(el => {
+                currentLang === 'sq' ? el.classList.remove('hidden') : el.classList.add('hidden');
+            });
+            document.querySelectorAll('.lang-en').forEach(el => {
+                currentLang === 'en' ? el.classList.remove('hidden') : el.classList.add('hidden');
+            });
+
+            document.querySelectorAll('input[data-ph-sq], textarea[data-ph-sq]').forEach(input => {
+                input.placeholder = currentLang === 'sq' ? input.getAttribute('data-ph-sq') : input.getAttribute('data-ph-en');
+            });
+            
+            document.documentElement.lang = currentLang;
+        }
+
+        langToggleBtns.forEach(btn => {
+            if(btn) btn.addEventListener('click', switchLanguage);
+        });
+
+        // WhatsApp Direct Message Handler
+        document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('formName').value;
+            const age = document.getElementById('formAge').value;
+            const pos = document.getElementById('formPos').value;
+            const goal = document.getElementById('formGoal').value;
+
+            const text = `Përshëndetje Gabriel! Unë jam ${name}, ${age} vjeç, luaj si ${pos}. Synimi im kryesor: ${goal}. Dëshiroj të rezervoj seancën time të parë të stërvitjes!`;
+            const encodedText = encodeURIComponent(text);
+            window.open(`https://wa.me/355692064673?text=${encodedText}`, '_blank');
+        });
+
+        // Sticky Header Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                navbar.classList.add('bg-dark/95', 'backdrop-blur-md', 'border-gray-800');
+                navbar.classList.remove('border-transparent');
+            } else {
+                navbar.classList.remove('bg-dark/95', 'backdrop-blur-md', 'border-gray-800');
+                navbar.classList.add('border-transparent');
+            }
+        });
+
+        // Mobile Menu Drawer Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
